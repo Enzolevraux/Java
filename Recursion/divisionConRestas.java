@@ -1,3 +1,4 @@
+package Recursion;
 import java.util.Scanner;
 
 public class divisionConRestas {
@@ -5,31 +6,34 @@ public class divisionConRestas {
 
     public static void main(String[] args){     //método main
 
-        int dividendoRecursivo, divisorRecursivo, dividendoIterativo, divisorIterativo;     //declaración variables
+        int dividendoRecursivo, divisorRecursivo, divisorIterativo;     //declaración variables
+        long dividendoIterativo;
                                                                                             //dividendos y divisores
         System.out.print("introduzca el dividendo para la división recursiva: ");
         dividendoRecursivo = usuario.nextInt();                                         //asignación de valores por teclado
         System.out.print("introduzca el divisor para la división recursiva: ");         //para división recursiva
         divisorRecursivo = usuario.nextInt();
 
-        //mostrar en pantalla resultado de la división recursiva llamando al método y enviando los valores por parámetro
+        //Mostrar en pantalla el resultado de la división recursiva llamando al método "restasSucesivas" y enviando
+        // los valores de tipo "int" por parámetro
 
         System.out.println("El resultado de la división recursiva es: " +
-                divisionRecursiva(dividendoRecursivo, divisorRecursivo));
+                restasSucesivas(dividendoRecursivo, divisorRecursivo));
 
         System.out.print("introduzca el dividendo para la división Iterativa: ");
         dividendoIterativo = usuario.nextInt();                                         //asignación de valores por teclado
         System.out.print("introduzca el divisor para la división Iterativa: ");         //para división con restas iteradas
         divisorIterativo = usuario.nextInt();
 
-        //mostrar en pantalla resultado de la división iterativa llamando al método y enviando los valores por parámetro
+        //Mostrar en pantalla el resultado de la división iterativa realizando la sobrecarga de método, enviándole
+        // un valor de tipo "int" y otro de tipo "long" por parámetro a "restasSucesivas"
 
         System.out.println("El resultado de la división Iterativa es: " +
-                divisionIterada(dividendoIterativo, divisorIterativo));
+                restasSucesivas(dividendoIterativo, divisorIterativo));
 
     }
 
-    public static int divisionRecursiva(int dividendo, int divisor){    //método recursivo para dividir
+    public static int restasSucesivas(int dividendo, int divisor){    //método recursivo para dividir
 
         if (divisor > dividendo){       //cuando el divisor es mayor al número a dividir...
                                         //
@@ -37,11 +41,11 @@ public class divisionConRestas {
         } else {
                                                                                 //caso contrario, el método se llama a si
                                                                                 //mismo, restando al dividendo el valor
-            return 1 + (divisionRecursiva(dividendo-divisor, divisor));//del divisor las veces necesarias
+            return 1 + (restasSucesivas(dividendo-divisor, divisor));//del divisor las veces necesarias
         }
     }
 
-    public static int divisionIterada(int dividendo, int divisor) {     //método con divisiones iteradas para dividir
+    public static int restasSucesivas(long dividendo, int divisor) {     //método con divisiones iteradas para dividir
         int resultado = 0;      //resultado y contador inicializado a 0.
 
         if (divisor > 0) {      //comparador para saber si el divisor es mayor a 0 y así la división sea posible
